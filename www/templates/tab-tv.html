@@ -1,0 +1,57 @@
+<ion-view view-title="Furg TV" ng-init="tab=1">
+  <ion-content>
+
+
+<div class="tabs-container">
+    <div class="tab-content" ng-show="tab == 1" > 
+      <iframe style="border:0;width:110%; height:440px;" scrolling="1" marginheight="0" marginwidth="0" src="http://directradios.com/gerador3w/test/player.php?width=&amp;height=400&amp;autoplay=0&amp;controles=1&amp;skin=six&amp;share=1&amp;autoreconect=1&amp;url=rtmp://shflash.directradios.com/furgtv/stream&amp;tipo=1&amp;logo=&amp;posicao=top-right&amp;site=" ></iframe>
+    </div>
+
+    <div class="tab-content" ng-show="tab == 2">
+      <h3>Segunda aba</h3>
+      <p>
+         <ion-list>
+
+
+      <div class="list card">
+        <div class="item item-divider">Programação</div>
+        <div class="item item-body">
+          <div>
+           Aba inferior com transmissao e programas (http://www.furgtv.furg.br/indexTv.html)
+          </div>
+        </div>
+      </div>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+        <img ng-src="{{chat.face}}">
+        <h2>{{chat.name}}</h2>
+        <p>{{chat.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+      </p>
+    </div>
+
+    
+  </div>
+
+
+  </ion-content>
+  <div class="bar bar-footer ">
+  <div class="tabs-striped tabs-color-calm">
+    <div class="tabs">
+      <!-- ao vivo -->
+      <a class="tab-item active " ng-click="tab=1" ng-class="{'active' : tab==1}">
+        <i class="icon ion-ios-play-outline" ></i>
+      </a>
+      <!-- programaçao -->
+      <a class="tab-item" href="#" ng-click="tab=2" ng-class="{'active' : tab==2 }">
+        <i class="icon ion-ios-list-outline"></i>       
+      </a>
+    </div>
+  </div>
+</div>
+</ion-view>

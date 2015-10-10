@@ -1,0 +1,9 @@
+<ion-view view-title="Notícias">
+  <ion-content class="padding">  
+	<ion-list>
+	    <a ng-repeat="noticia in noticias" class="item"   href="#/tab/news/:{{$index}}" >
+	        <b>{{noticia.title}}"</b><br>
+	    </a>
+	</ion-list>
+  </ion-content>  
+</ion-view>
