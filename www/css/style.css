@@ -89,3 +89,7 @@
 	border-bottom: 3px solid #ccc;
 }
 
+.item , .item h2{
+    /**/
+    white-space: inherit;
+}

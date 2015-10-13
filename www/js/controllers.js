@@ -34,10 +34,12 @@ angular.module('starter.controllers', [])
 
   $scope.socialSharing = function() {
         $cordovaSocialSharing
-            .share($scope.noticia.content, $scope.noticia.title, '', $scope.noticia.link) // Share via native share sheet
+
+            .share( "link para notícia: " + $scope.noticia.link +' '+ $scope.noticia.content, $scope.noticia.title, null, $scope.noticia.link) // Share via native share sheet
             .then(function(result) {
                 // Success!
             }, function(err) {
+              console.log (err);
                 // An error occured. Show a message to the user
             });
   }
