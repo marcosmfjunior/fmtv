@@ -1,4 +1,3 @@
-
 angular.module('starter.services', [])
 
 .factory('Noticias', function($http,$q) {

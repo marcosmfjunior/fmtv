@@ -20,12 +20,16 @@
 	    	<b>Descrição: </b>{{evento.OBSERVACAO}}
 	    </p>
 	    <div class="list">
-		  <div ng-repeat="programacao in programacoes">
+		  <div ng-repeat="programacao in evento.PROGRAMACOES">
 			  <div class="item item-divider">
 			    {{programacao.DESCRICAO}}
 			  	<a class="item" href="#">
 			    	{{programacao.SALA}}
+			    	<div ng-repeat="autor in programacao.AUTORES">
+			    		{{autor.AUTOR}}
+			    	</div>
 			  	</a>
+
 			  </div>
 		  </div>
 		</div>

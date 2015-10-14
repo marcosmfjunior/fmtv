@@ -70,7 +70,9 @@ angular.module('starter.controllers', [])
 
   eventos.get(indice).then(function(evento) {      
       $scope.evento = evento;
-      $scope.programacoes = evento.programacoes;
+      //$scope.programacoes = evento.PROGRAMACOES;
+      //$scope.autores = evento.PROGRAMACOES[indice].AUTORES;
+      //console.log($scope.autores);
       console.log(evento);
     });  
 
