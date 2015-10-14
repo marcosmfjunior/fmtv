@@ -47,4 +47,26 @@ angular.module('starter.services', [])
     });
   }
   };
+})
+
+.factory('Eventos', function($http,$q) {
+
+  var eventos = $http.get("http://marcosmartinsjr.com/radio/evento/api/eventos.json")
+    .then(function(response) {
+        console.log(response.data)
+        return response.data;
+    });
+ 
+  return {
+    all: function() {
+      return eventos.then(function(array){
+        return array;
+      });
+    },
+    get: function(eventoIndex) {
+    return eventos.then(function(array) {
+        return array[parseInt(eventoIndex)];        
+    });
+  }
+  };
 });

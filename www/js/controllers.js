@@ -45,4 +45,48 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('EventosCtrl',function($scope) {});
+.controller('EventosCtrl',function($scope, $stateParams, Eventos) {
+  var eventos = Eventos;
+
+  eventos.all().then(function(feed) {
+    $scope.eventos = feed;   
+    //atualizaData(); 
+  });
+
+  function atualizaData(){
+    for (var i = 0, tamanho = $scope.eventos.length; i < tamanho; i++) {
+      $scope.eventos[i].evento.DATAFIM = $scope.eventos[i].evento.DATAFIM.getMonth();
+      var dataFim = new Date(scope.eventos[i].evento.DATAFIM);
+      console.log(dataFim.getMonth());
+    };
+  }
+
+})
+
+.controller('EventosDetailCtrl', function($scope, $stateParams, Eventos, $cordovaSocialSharing) {
+  var eventos = Eventos;   
+  var indice = $stateParams.nIndex;
+
+
+  //verifica se o primeiro char é :, se for tira
+  if( indice.charAt( 0 ) === ':' )
+      indice = indice.slice( 1 );
+
+  eventos.get(indice).then(function(evento) {      
+      $scope.evento = evento.evento;
+      $scope.programacoes = evento.programacoes;
+      console.log(evento);
+    });  
+
+  /*$scope.socialSharing = function() {
+        $cordovaSocialSharing
+
+            .share( "link para notícia: " + $scope.noticia.link +' '+ $scope.noticia.content, $scope.noticia.title, null, $scope.noticia.link) // Share via native share sheet
+            .then(function(result) {
+                // Success!
+            }, function(err) {
+              console.log (err);
+                // An error occured. Show a message to the user
+            });
+  }*/
+});

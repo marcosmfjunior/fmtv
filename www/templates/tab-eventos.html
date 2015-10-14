@@ -1,12 +1,13 @@
 <ion-view view-title="Eventos">
-  <ion-content class="padding">
-  <div class="list card">
-    <div class="item item-divider">Evento</div>
-    <div class="item item-body">
-      <div>
-        Evento Evento Evento Evento
-      </div>
-    </div>
-  </div>
+  <ion-content class="padding">  
+  <ion-list>
+      <a ng-repeat="evento in eventos" class="item item-avatar"   href="#/tab/eventos/:{{$index}}" >
+          <img src="img/ionic.png">
+          <h2><b>{{evento.evento.DESCRICAO}}</b></h2>
+          <h3>{{evento.evento.LOCAL}}</h3>
+          <p>{{evento.evento.DATAINI | date:'dd/MM'}} a {{evento.evento.DATAFIM | date:'dd/MM'}}</p>
+        </div>
+      </a>
+  </ion-list>
   </ion-content>  
 </ion-view>
