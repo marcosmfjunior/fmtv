@@ -1,30 +1,3 @@
-/*(function() {
-angular.module('starter.services', [])
-
-.factory('rssService', function($http,$q) {  
-    
-    var entries;
-
-    return {
-      getEntries: function() {
-        var deferred = $q.defer();                
-        $http.get("http://ajax.googleapis.com/ajax/services/feed/load", { params: { "v": "1.0", "q": "http://www.furg.br/bin/rss/noticias.php", "num":"10" } })
-          .success(function(data) {
-            console.log(data);
-              entries = data.responseData.feed.entries;
-              deferred.resolve(entries);
-          })
-          .error(function(data) {
-              console.log("ERROR: " + data);
-          });
-     
-        return deferred.promise;
-      }
-
-    };
-  });
-}());
-*/
 
 angular.module('starter.services', [])
 
@@ -51,7 +24,7 @@ angular.module('starter.services', [])
 
 .factory('Eventos', function($http,$q) {
 
-  var eventos = $http.get("http://marcosmartinsjr.com/radio/evento/api/eventos.json")
+  var eventos = $http.get("http://marcosmartinsjr.com/radio/evento/api/eventos_v1.json")
     .then(function(response) {
         console.log(response.data)
         return response.data;

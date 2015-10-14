@@ -13,8 +13,9 @@
 
 	  <div class="item item-body">	    
 	    <p>
-	    {{noticia.content}} 
-	    </p>	    
+	      {{noticia.content}} 
+	      <br>Link para a notícia: <a href="{{noticia.link}}">{{noticia.link}} </a>
+	    </p>
 	  </div>
 
 	  <div class="item tabs tabs-secondary tabs-icon-left" ng-click="socialSharing()">

@@ -89,6 +89,13 @@
 	border-bottom: 3px solid #ccc;
 }
 
+
+.loading{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .item , .item h2{
     /**/
     white-space: inherit;

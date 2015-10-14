@@ -1,11 +1,12 @@
 <ion-view view-title="Eventos">
-  <ion-content class="padding">  
+  <ion-content class="padding">
+  <img class="loading" ng-if="isLoading" src="img/load.gif"/>  
   <ion-list>
       <a ng-repeat="evento in eventos" class="item item-avatar"   href="#/tab/eventos/:{{$index}}" >
           <img src="img/ionic.png">
-          <h2><b>{{evento.evento.DESCRICAO}}</b></h2>
-          <h3>{{evento.evento.LOCAL}}</h3>
-          <p>{{evento.evento.DATAINI | date:'dd/MM'}} a {{evento.evento.DATAFIM | date:'dd/MM'}}</p>
+          <h2><b>{{evento.DESCRICAO}}</b></h2>
+          <h3>{{evento.LOCAL}}</h3>
+          <p>{{evento.DATAINI | date:'dd/MM'}} a {{evento.DATAFIM | date:'dd/MM'}}</p>
         </div>
       </a>
   </ion-list>

@@ -5,8 +5,11 @@ angular.module('starter.controllers', [])
 .controller('TvCtrl',function($scope) {alert('ee');})
 
 .controller('NewsCtrl',function($scope,Noticias) {
+  $scope.isLoading = true;
+
   var noticias = Noticias;  
   noticias.all().then(function(feed) {
+    $scope.isLoading = false;    
     $scope.noticias = feed;    
   });
 
@@ -46,20 +49,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('EventosCtrl',function($scope, $stateParams, Eventos) {
+  $scope.isLoading = true;
   var eventos = Eventos;
 
   eventos.all().then(function(feed) {
-    $scope.eventos = feed;   
-    //atualizaData(); 
+    $scope.isLoading = false;
+    $scope.eventos = feed;  
   });
-
-  function atualizaData(){
-    for (var i = 0, tamanho = $scope.eventos.length; i < tamanho; i++) {
-      $scope.eventos[i].evento.DATAFIM = $scope.eventos[i].evento.DATAFIM.getMonth();
-      var dataFim = new Date(scope.eventos[i].evento.DATAFIM);
-      console.log(dataFim.getMonth());
-    };
-  }
 
 })
 
@@ -73,7 +69,7 @@ angular.module('starter.controllers', [])
       indice = indice.slice( 1 );
 
   eventos.get(indice).then(function(evento) {      
-      $scope.evento = evento.evento;
+      $scope.evento = evento;
       $scope.programacoes = evento.programacoes;
       console.log(evento);
     });  
