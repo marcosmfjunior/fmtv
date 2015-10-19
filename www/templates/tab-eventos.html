@@ -1,5 +1,6 @@
 <ion-view view-title="Eventos">
   <ion-content class="padding">
+  <ion-refresher on-refresh="atualiza()"></ion-refresher>
   <img class="loading" ng-if="isLoading" src="img/load.gif"/>  
   <ion-list>
       <a ng-repeat="evento in eventos" class="item item-avatar"   href="#/tab/eventos/:{{$index}}" >

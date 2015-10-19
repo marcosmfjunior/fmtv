@@ -37,8 +37,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     .state('tab', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/tabs.html',
+    controller:'TabCtrl'
   })
+
 
   // Each tab has its own nav history stack:
 
@@ -133,10 +135,60 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
         controller: 'EventosDetailCtrl'
       }
     }
+  })
+
+  .state('tab.info', {
+    url: '/info',
+    views: {
+      'tab-info': {
+        templateUrl: 'templates/tab-info.html',
+        controller: 'InfoCtrl'
+      }
+    }
+  })
+
+  .state('tab.info-micro', {
+    url: '/info/micro',
+    views: {
+      'tab-info': {
+        templateUrl: 'templates/info/micro.html',
+        controller: 'MicroCtrl'
+      }
+    }
+  })
+
+  .state('tab.info-ru', {
+    url: '/info/ru',
+    views: {
+      'tab-info': {
+        templateUrl: 'templates/info/ru.html',
+        controller: 'RuCtrl'
+      }
+    }
+  })
+
+   .state('tab.info-sistemas', {
+    url: '/info/sistenas',
+    views: {
+      'tab-info': {
+        templateUrl: 'templates/info/sistemas.html',
+        controller: 'SistemasCtrl'
+      }
+    }
+  })
+
+  .state('tab.info-projeto', {
+    url: '/info/projeto',
+    views: {
+      'tab-info': {
+        templateUrl: 'templates/info/projeto.html',
+        controller: 'ProjetoCtrl'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/radio'); // seta a pag inicial
+  $urlRouterProvider.otherwise('/tab/news'); // seta a pag inicial
 
 });
 

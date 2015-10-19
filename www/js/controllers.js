@@ -1,8 +1,12 @@
 angular.module('starter.controllers', [])
 
+.controller('TabCtrl',function($scope){})
+
 .controller('RadioCtrl',function($scope) {})
 
-.controller('TvCtrl',function($scope) {alert('ee');})
+.controller('TvCtrl',function($scope) {})
+
+.controller('InfoCtrl',function($scope) {})
 
 .controller('NewsCtrl',function($scope,Noticias) {
   $scope.isLoading = true;
@@ -13,11 +17,14 @@ angular.module('starter.controllers', [])
     $scope.noticias = feed;    
   });
 
-  $scope.teste = function(index){
-    noticias.get(index).then(function(noticia) {
-      console.log(noticia);
-    });
-  }
+  $scope.atualiza = function() {
+    //$timeout( function() {
+        noticias.all().then(function(feed) {          
+          $scope.noticias = feed;    
+        });    
+      $scope.$broadcast('scroll.refreshComplete');    
+//    }, 1000);      
+  };
 
 })
 
@@ -48,6 +55,7 @@ angular.module('starter.controllers', [])
   }
 })
 
+
 .controller('EventosCtrl',function($scope, $stateParams, Eventos) {
   $scope.isLoading = true;
   var eventos = Eventos;
@@ -57,6 +65,15 @@ angular.module('starter.controllers', [])
     $scope.eventos = feed;  
   });
 
+
+  $scope.atualiza = function() {
+    //$timeout( function() {
+        eventos.all().then(function(feed) {          
+          $scope.eventos = feed;    
+        });    
+      $scope.$broadcast('scroll.refreshComplete');    
+//    }, 1000);      
+  };
 })
 
 .controller('EventosDetailCtrl', function($scope, $stateParams, Eventos, $cordovaSocialSharing) {
