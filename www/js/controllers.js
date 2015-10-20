@@ -8,6 +8,15 @@ angular.module('starter.controllers', [])
 
 .controller('InfoCtrl',function($scope) {})
 
+.controller('MicroCtrl',function($scope) {
+  var data = new Date();
+  var hora = data.getHours();    
+  var min = data.getMinutes();
+
+//comparar hr atual com o vetor de horarios para mostrar qual proximo bus
+//  var horarios = ["08:10"]
+})
+
 .controller('NewsCtrl',function($scope,Noticias) {
   $scope.isLoading = true;
 

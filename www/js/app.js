@@ -161,18 +161,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     url: '/info/ru',
     views: {
       'tab-info': {
-        templateUrl: 'templates/info/ru.html',
-        controller: 'RuCtrl'
+        templateUrl: 'templates/info/ru.html'
       }
     }
   })
 
    .state('tab.info-sistemas', {
-    url: '/info/sistenas',
+    url: '/info/sistemas',
     views: {
       'tab-info': {
-        templateUrl: 'templates/info/sistemas.html',
-        controller: 'SistemasCtrl'
+        templateUrl: 'templates/info/sistemas.html'
       }
     }
   })
