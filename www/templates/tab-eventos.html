@@ -2,14 +2,34 @@
   <ion-content class="padding">
   <ion-refresher on-refresh="atualiza()"></ion-refresher>
   <img class="loading" ng-if="isLoading" src="img/load.gif"/>  
+  <!--
   <ion-list>
       <a ng-repeat="evento in eventos" class="item item-avatar"   href="#/tab/eventos/:{{$index}}" >
           <img src="img/ionic.png">
           <h2><b>{{evento.DESCRICAO}}</b></h2>
           <h3>{{evento.LOCAL}}</h3>
-          <p>{{evento.DATAINI | date:'dd/MM'}} a {{evento.DATAFIM | date:'dd/MM'}}</p>
-        </div>
+          <p>{{evento.DATAINI | date:'dd/MM'}} a {{evento.DATAFIM | date:'dd/MM'}}</p>        
       </a>
   </ion-list>
+  -->
+    <a ng-repeat="evento in eventos" href="#/tab/eventos/:{{$index}}">    
+      <div class="evento col-50" align="center">
+        <h2 class="titulo"><b>{{evento.DESCRICAO}}</b></h2>
+        <img src="img/bus.png">
+        <div class="descricao">
+          <i class="ion-ios-location-outline"></i>  {{evento.LOCAL}}<br>
+          <i class="ion-calendar"></i>  {{evento.DATAINI | date:'dd/MM'}} a {{evento.DATAFIM | date:'dd/MM'}}
+        </div>
+      </div>
+    </a>
+    <div class="evento col-50" align="center">
+        <h2 class="titulo"><b>{{evento.DESCRICAO}}</b></h2>
+        <img src="img/ionic.png">
+        <div class="descricao">
+          <i class="ion-ios-location-outline"></i>  {{evento.LOCAL}}<br>
+          <i class="ion-calendar"></i>  {{evento.DATAINI | date:'dd/MM'}} a {{evento.DATAFIM | date:'dd/MM'}}
+        </div>
+      </div>
+    
   </ion-content>  
 </ion-view>

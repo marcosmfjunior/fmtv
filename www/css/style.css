@@ -105,6 +105,7 @@
     margin-left: -5px;
 }
 
+/* lista com vizualizador*/
 .list .item.item-accordion {
   line-height: 38px;
   padding-top: 0;
@@ -117,4 +118,50 @@
 .list .item.item-accordion.ng-hide-add,
 .list .item.item-accordion.ng-hide-remove {
   display: block !important;
+}
+
+
+.tab-nav{
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);    
+}
+
+.evento{
+    display: block;
+    float: left;  
+    padding: 10 10 10 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); 
+    width: 45%;
+    margin-left: 10px;
+    margin-top: 10px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 2px;
+}
+.evento .titulo{
+    padding: 10px;
+    background: #444;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}                    
+
+.evento .descricao {
+    width: 100%;
+    background: #767676;
+    color: #ffffff;
+    padding: 5px 0px 5px 0px;
+}                  
+
+.evento .descricao i{
+    padding-right:5px ;
+    font-size: 16px;
+    color: black;
+}  
+
+
+.evento img{
+    height: 100px;
 }
