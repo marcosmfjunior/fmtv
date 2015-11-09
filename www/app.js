@@ -6,6 +6,22 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngCordova'])
+.directive('fbPost', function($document) {
+    return {
+      restrict: 'EA',
+      replace: false,
+      link: function($scope, element, attr) {
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1652034465042425 ";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      }
+    }
+  })
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -40,7 +56,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     templateUrl: 'templates/tabs.html',
     controller:'TabCtrl'
   })
- 
+
+
+  // Each tab has its own nav history stack:
+
 
   .state('tab.radio', {
     url: '/radio',
@@ -72,6 +91,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
         }
       }      
   })
+/*
+  .state('tab.chats', {
+      url: '/chats',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/tab-chats.html',
+          controller: 'ChatsCtrl'
+        }
+      }
+    })
+
+    .state('tab.chat-detail', {
+      url: '/chats/:chatId',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/chat-detail.html',
+          controller: 'ChatDetailCtrl'
+        }
+      }
+    })*/
 
   .state('tab.news', {
     url: '/news',
@@ -143,11 +182,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     }
   })
 
-   .state('tab.info-biblioteca', {
-    url: '/info/biblioteca',
+   .state('tab.info-sistemas', {
+    url: '/info/sistemas',
     views: {
       'tab-info': {
-        templateUrl: 'templates/info/biblioteca.html'
+        templateUrl: 'templates/info/sistemas.html'
       }
     }
   })
@@ -157,33 +196,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     views: {
       'tab-info': {
         templateUrl: 'templates/info/projeto.html',
+        controller: 'ProjetoCtrl'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/news'); // seta a pag inicial
-  $ionicConfigProvider.backButton.text('Voltar');//altera nome para botao de voltar a pag
 
-})
-
-.directive('fbPost', function($document) {
-  return {
-    restrict: 'EA',
-    replace: false,
-    link: function($scope, element, attr) {
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1652034465042425 ";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    }
-  }
-})
-
-
-;
+});
 

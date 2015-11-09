@@ -6,42 +6,58 @@
 -->
 <ion-view view-title="">
   <ion-content class="padding">
-  <img parallax parallax-ratio="0.4" src="img/ionic.png"/>
-   <div class="list card" parallax-background parallax-ratio="0.2">
-	  <div class="item" style:"text-align: center;">
-	    <h2>{{evento.DESCRICAO}}</h2>
+   <div class="list card detalhe-evento">
+	  <div class="item titulo" >
+	    {{evento.DESCRICAO}}
 	  </div>
 
 	  <div class="item item-body">	    
-	    <p>
-	      <b>Data Início :</b>{{evento.DATAINI}}<br>
-	      <b>Data FIM :</b>{{evento.DATAFIM}}
-	    </p>
-	    <p>
-	    	<b>Descrição: </b>{{evento.OBSERVACAO}}
-	    </p>
-	    <div class="list">
-		  <div ng-repeat="programacao in evento.PROGRAMACOES">
-			  <div class="item item-divider">
-			    {{programacao.DESCRICAO}}
-			  	<a class="item" href="#">
-			    	{{programacao.SALA}}
-			    	<div ng-repeat="autor in programacao.AUTORES">
-			    		{{autor.AUTOR}}
-			    	</div>
-			  	</a>
+  	  <img  class="full-image" src="img/semana.jpg"/>
+	   	<ul class="list">
+    		<li class="item">
+	      		<b>Data Início :</b>{{evento.DATAINI}}
+	         </li>
+	          <li class="item">
+	      		 <b>Data Fim :</b>{{evento.DATAFIM}}
+	         </li>
+	         <li class="item">
+	      		 <b>Descrição: </b>{{evento.OBSERVACAO}}
+	         </li>
+		</ul>
+	     
+	 	<section id="cd-timeline">
+				<div ng-repeat="programacao in evento.PROGRAMACOES"  class="cd-timeline-block">
+					<div class="cd-timeline-img">			
+					</div> <!-- cd-timeline-img -->
+			 
+					<div class="cd-timeline-content">
+						<h2>{{programacao.DESCRICAO}}</h2>
+						<p>incluir descriçao no eventos.</p>
+						<span class="cd-read-more">{{programacao.HORAINI}} a {{programacao.HORAFIM}} <br>{{programacao.SALA}}</span>
+						
+					</div> <!-- cd-timeline-content -->
 
-			  </div>
-		  </div>
-		</div>
+				</div> <!-- cd-timeline-block -->
+			 
+				<div class="cd-timeline-block">
+					<!-- ... -->
+				</div>
+			</section>
 	  </div>
 
-	  <div class="item tabs tabs-secondary tabs-icon-left" ng-click="socialSharing()">
+	  <div class="item tabs tabs-secondary tabs-icon-left">
 	    <a class="tab-item" style="color:#828282">
-	      <i class="icon ion-share"></i>
-	      Compartilhar
+	      <i class="icon ion-android-bookmark"></i>
+	      Inscrição
+	    </a>
+	    <a class="tab-item" style="color:#828282"  ng-click="teste()">
+	      <i class="icon ion-android-checkmark-circle"></i>
+	      Lembrar-me
 	    </a>
 	  </div>
-	</div>
+	</div>	
+
+
+	  
   </ion-content>
 </ion-view>
