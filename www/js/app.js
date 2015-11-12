@@ -47,10 +47,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     views: {
       'tab-radio': {
         templateUrl: 'templates/tab-radio.html',
-        controller: 'RadioCtrl'
+        controller: 'RadioCtrl'}
       }
     }
-  })
+  )
 
   .state('tab.tv', {
     url: '/tv',
@@ -83,6 +83,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     }
   })
 
+  .state('tab.news-fav', {
+    url: '/news/fav',
+    views: {
+      'tab-news': {
+        templateUrl: 'templates/news-fav.html',
+        controller: 'NewsFavCtrl'
+      }
+    }
+  })
+  
   .state('tab.news-detail', {
     url: '/news/:nIndex',
     views: {

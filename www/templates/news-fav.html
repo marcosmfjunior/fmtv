@@ -1,9 +1,7 @@
-<ion-view view-title="Notícias">
-   <a href="#/tab/news/fav">
-     <fab-button target-id="scrollFabButtonTarget">
-        <i class="icon ion-android-star-outline"></i>
-      </fab-button>
-    </a>
+<ion-view view-title="Notícias Favoritas">
+   <fab-button target-id="scrollFabButtonTarget">
+      <i class="icon ion-android-star-outline"></i>
+    </fab-button>
   <ion-content class="padding" has-bouncing='false' > 
     <ion-refresher on-refresh="atualiza()">                     
     </ion-refresher>
@@ -24,7 +22,7 @@
       Edit
     </ion-option-button>
     -->
-    <ion-item class="item news" ng-repeat="noticia in noticias"  href="#/tab/news/:{{$index}}" >
+    <ion-item class="item news" ng-repeat="noticia in noticiasFav"  href="#/tab/news/:{{$index}}" >
         <!-- descomentar qdo compilar <span class="news">{{noticia.title}}</span> -->
         {{noticia.title}}
         <ion-option-button class="button-light icon ion-heart"></ion-option-button>

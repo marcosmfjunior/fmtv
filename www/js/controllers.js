@@ -23,7 +23,10 @@ angular.module('starter.controllers', [])
   //console.log($localstorage.get('favNews'));
 
   var noticias = Noticias;  
+  var feedNews;
   noticias.all().then(function(feed) {
+    console.log(feed);
+    feedNews = feed;
     $scope.isLoading = false;    
     $scope.noticias = feed;    
   });
@@ -37,8 +40,24 @@ angular.module('starter.controllers', [])
 //    }, 1000);      
   };
 
-  $scope.addFav = function(noticia){
-    var favNews = [];
+  $scope.addFav = function(indice){
+    
+    noticia = feedNews[indice];
+
+    var favNews = $localstorage.get('favNews');//nao foi usado getObject pois dava erro na verificação de nulo
+    console.log(favNews);
+
+    if(favNews == null)
+      favNews = []; //se for nulo declara um array para fazer push posteriormente
+    else 
+      favNews = JSON.parse(favNews);//se nao for nulo passa de texto para o formato JSON
+
+    favNews.push(noticia);
+    console.log(favNews);
+
+    $localstorage.setObject('favNews',favNews);
+
+/*
     if($localstorage.getObject('favNews') != null)
       favNews.push($localstorage.getObject('favNews'));
 
@@ -50,9 +69,17 @@ angular.module('starter.controllers', [])
 
     $localstorage.setObject('favNews', favNews);
     //console.log(post);
+    */
   }
 
 })
+
+.controller('NewsFavCtrl',function($scope,Noticias,$localstorage) {
+
+    $scope.noticiasFav = $localstorage.getObject('favNews');
+    console.log($scope.noticiasFav);
+})
+
 
 .controller('NewsDetailCtrl', function($scope, $stateParams, Noticias, $cordovaSocialSharing ) {
   var noticias = Noticias;   
