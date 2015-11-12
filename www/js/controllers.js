@@ -17,8 +17,10 @@ angular.module('starter.controllers', [])
 //  var horarios = ["08:10"]
 })
 
-.controller('NewsCtrl',function($scope,Noticias) {
+.controller('NewsCtrl',function($scope,Noticias,$localstorage) {
   $scope.isLoading = true;
+
+  //console.log($localstorage.get('favNews'));
 
   var noticias = Noticias;  
   noticias.all().then(function(feed) {
@@ -34,6 +36,21 @@ angular.module('starter.controllers', [])
       $scope.$broadcast('scroll.refreshComplete');    
 //    }, 1000);      
   };
+
+  $scope.addFav = function(noticia){
+    var favNews = [];
+    if($localstorage.getObject('favNews') != null)
+      favNews.push($localstorage.getObject('favNews'));
+
+    console.log(noticia);
+    console.log(favNews);
+    
+    favNews.push(JSON.stringify(noticia));
+    console.log(favNews);
+
+    $localstorage.setObject('favNews', favNews);
+    //console.log(post);
+  }
 
 })
 

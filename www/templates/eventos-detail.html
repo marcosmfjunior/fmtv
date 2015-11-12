@@ -15,10 +15,10 @@
   	  <img  class="full-image" src="img/semana.jpg"/>
 	   	<ul class="list">
     		<li class="item">
-	      		<b>Data Início :</b>{{evento.DATAINI}}
+	      		<b>Data Início :</b>{{evento.DATAINI | date:'dd/MM/yy'}}
 	         </li>
 	          <li class="item">
-	      		 <b>Data Fim :</b>{{evento.DATAFIM}}
+	      		 <b>Data Fim :</b>{{evento.DATAFIM | date:'dd/MM/yy'}}
 	         </li>
 	         <li class="item">
 	      		 <b>Descrição: </b>{{evento.OBSERVACAO}}
