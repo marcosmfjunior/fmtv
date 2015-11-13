@@ -1,0 +1,12 @@
+<ion-view view-title="Notícias">
+  <ion-content class="padding"> 
+    <ion-refresher on-refresh="atualiza()">                     
+    </ion-refresher>
+  	<img class="loading" ng-if="isLoading" src="img/load.gif"/>  	
+    <ion-list>
+	    <a ng-repeat="noticia in noticias" class="item"   href="#/tab/news/:{{$index}}" >
+	        <b>{{noticia.title}}</b><br>
+	    </a>
+	</ion-list>
+  </ion-content>  
+</ion-view>

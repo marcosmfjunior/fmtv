@@ -7,7 +7,7 @@
     <a ng-repeat="evento in eventos" href="#/tab/eventos/:{{$index}}">    
       <div class="evento col-50" align="center">
         <h2 class="titulo"><b>{{evento.DESCRICAO}}</b></h2>
-        <img src="{{urlBase}}{{evento.IMAGEM_DESTAQUE}}">
+        <img src="img/bus.png">
         <div class="descricao">
           <i class="ion-ios-location-outline"></i>  {{evento.LOCAL}}<br>
           <i class="ion-calendar"></i>  {{evento.DATAINI | date:'dd/MM'}} a {{evento.DATAFIM | date:'dd/MM'}}

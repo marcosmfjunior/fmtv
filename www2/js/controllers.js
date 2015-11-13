@@ -116,8 +116,7 @@ angular.module('starter.controllers', [])
 
   eventos.all().then(function(feed) {
     $scope.isLoading = false;
-    $scope.eventos = feed;
-    $scope.urlBase = "http://marcosmartinsjr.com/radio/evento/uploads/eventos/";
+    $scope.eventos = feed;  
   });
 
 
@@ -142,11 +141,10 @@ angular.module('starter.controllers', [])
 
   eventos.get(indice).then(function(evento) {      
       $scope.evento = evento;
-      $scope.urlBase = "http://marcosmartinsjr.com/radio/evento/uploads/eventos/";
       //$scope.programacoes = evento.PROGRAMACOES;
       //$scope.autores = evento.PROGRAMACOES[indice].AUTORES;
       //console.log($scope.autores);
-      // console.log(evento);
+      console.log(evento);
     });  
 
   $scope.teste = function() {
