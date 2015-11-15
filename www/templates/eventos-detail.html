@@ -12,16 +12,16 @@
 	  </div>
 
 	  <div class="item item-body">	    
-  	  <img src="{{urlBase}}{{evento.IMAGEM_BANNER}}"/>
+  	  <img class="full-image" src="{{urlBase}}{{evento.IMAGEM_BANNER}}"/>
 	   	<ul class="list">
     		<li class="item">
-	      		<b>Data Início :</b>{{evento.DATAINI | date:'dd/MM/yy'}}
+	      		<b>Data Início: </b>{{evento.DATAINI | date:'dd/MM/yy'}}
 	         </li>
 	          <li class="item">
-	      		 <b>Data Fim :</b>{{evento.DATAFIM | date:'dd/MM/yy'}}
+	      		 <b>Data Fim: </b>{{evento.DATAFIM | date:'dd/MM/yy'}}
 	         </li>
 	         <li class="item">
-	      		 <b>Descrição: </b>{{evento.OBSERVACAO}}
+	      		 <b>Descrição :</b>{{evento.OBSERVACAO}}
 	         </li>
 		</ul>
 	     
@@ -33,7 +33,7 @@
 					<div class="cd-timeline-content">
 						<h2>{{programacao.DESCRICAO}}</h2>
 						<p>incluir descriçao no eventos.</p>
-						<span class="cd-read-more">{{programacao.HORAINI}} a {{programacao.HORAFIM}} <br>{{programacao.SALA}}</span>
+						<span class="cd-read-more">{{programacao.HORAINI | totime}} a {{programacao.HORAFIM | totime}} <br>{{programacao.SALA}}</span>
 						
 					</div> <!-- cd-timeline-content -->
 
@@ -46,7 +46,7 @@
 	  </div>
 
 	  <div class="item tabs tabs-secondary tabs-icon-left">
-	    <a class="tab-item" style="color:#828282">
+	    <a class="tab-item" style="color:#828282" href="{{evento.LINK_INFORMACAO}}">
 	      <i class="icon ion-android-bookmark"></i>
 	      Inscrição
 	    </a>

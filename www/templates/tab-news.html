@@ -1,6 +1,6 @@
 <ion-view view-title="Notícias">
    <a href="#/tab/news/fav">
-     <fab-button target-id="scrollFabButtonTarget">
+     <fab-button style="background:#0c63ee" target-id="scrollFabButtonTarget">
         <i class="icon ion-android-star-outline"></i>
       </fab-button>
     </a>
@@ -25,10 +25,8 @@
     </ion-option-button>
     -->
     <ion-item class="item news" ng-repeat="noticia in noticias"  href="#/tab/news/:{{$index}}" >
-        <!-- descomentar qdo compilar <span class="news">{{noticia.title}}</span> -->
-        {{noticia.title}}
-        <ion-option-button class="button-light icon ion-heart"></ion-option-button>
-        <ion-option-button class="button-light icon ion-email"></ion-option-button>
+        <span class="news">{{noticia.title}}</span> 
+        <!-- {{noticia.title}} -->
         <ion-option-button class="button-positive icon ion-android-star" ng-click="addFav($index)" ng-show="true"></ion-option-button>
     </ion-item>   
 	</ion-list>

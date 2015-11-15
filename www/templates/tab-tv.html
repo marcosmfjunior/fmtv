@@ -1,13 +1,16 @@
+    <script src="jw-player/src/js/jwplayer.js"></script>
+
 <ion-view view-title="Comunicação" ng-init="tab=1">
   <ion-content>
-
-   <div class="bar bar-header bar-stable">
-      <iframe style="border:0;" scrolling="0" marginheight="0" marginwidth="0" src="http://directradios.com/gerador3w/test/player.php?width=300&amp;height=30&amp;autoplay=0&amp;controles=1&amp;skin=six&amp;share=0&amp;autoreconect=1&amp;url=rtmp://shflash.directradios.com/furgfm/stream&amp;tipo=1&amp;logo=&amp;posicao=top-right&amp;site=" width="100%" height="100%"></iframe>   
+    <div id="player" class="player" name="player">
     </div>
+      <p>
+      <iframe style="border:0;" scrolling="auto"  src="http://directradios.com/gerador3w/test/player.php?width=300&amp;height=30&amp;autoplay=0&amp;controles=1&amp;skin=beelden&amp;share=0&amp;autoreconect=1&amp;url=rtmp://shflash.directradios.com/furgfm/stream&amp;tipo=1&amp;logo=&amp;posicao=bottom-right&amp;site=" width="100%" height="100%"></iframe>   
+      </p>
 
+<!--
     <div fb-post class="bar bar-subheader fb-page" data-href="https://www.facebook.com/FURGinstitucional" data-small-header="true" data-adapt-container-width="true" data-adapt-container-height="true" data-hide-cover="true" data-show-facepile="false" data-show-posts="true">
     </div>
-<!--
 <div class="tabs-container">
     <div class="tab-content" ng-show="tab == 1" > 
       <div class="bar bar-header bar-stable">
@@ -41,6 +44,8 @@
     
   </div>
 
+    -->
+  </ion-content>
 
   <div class="bar bar-footer rodape">
   <div class="tabs-striped tabs-color-light">
@@ -54,6 +59,4 @@
     </div>
   </div>
 </div>
-    -->
-  </ion-content>
 </ion-view>

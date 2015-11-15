@@ -25,22 +25,42 @@ angular.module('starter.services', [])
 
   var eventos = $http.post("http://marcosmartinsjr.com/radio/evento/api/eventos_v1.json")
     .then(function(response) {
-        console.log(response.data)
+        console.log(response.data);       
+        response.data = verificaData(response.data); 
+        console.log(response.data);
         return response.data;
     });
- 
+
+ function verificaData(eventos){
+  var eventosAtuais=[];
+  var data_evento;
+  var data_atual = new Date();
+  for (var i = 0, tam = eventos.length; i < tam ; i++) {
+      //console.log(eventos[i]);
+      data_evento = new Date(eventos[i].DATAFIM);
+
+            if (data_evento > data_atual)
+        eventosAtuais.push(eventos[i]);        
+    };  
+    return eventosAtuais;
+ }
+  
   return {
     all: function() {
       return eventos.then(function(array){
+        //array = verificaData(array);
         return array;
       });
     },
     get: function(eventoIndex) {
-    return eventos.then(function(array) {
-        return array[parseInt(eventoIndex)];        
+      //return eventosAtuais[eventoIndex];
+      return eventos.then(function(array) {
+      return array[parseInt(eventoIndex)];        
     });
+
   }
   };
+ 
 })
 
 .factory('$localstorage', ['$window', function($window) {
