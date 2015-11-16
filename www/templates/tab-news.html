@@ -1,7 +1,7 @@
 <ion-view view-title="Notícias">
    <a href="#/tab/news/fav">
      <fab-button style="background:#0c63ee" target-id="scrollFabButtonTarget">
-        <i class="icon ion-android-star-outline"></i>
+        <i class="icon ion-android-star"></i>
       </fab-button>
     </a>
   <ion-content class="padding" has-bouncing='false' > 
@@ -27,7 +27,7 @@
     <ion-item class="item news" ng-repeat="noticia in noticias"  href="#/tab/news/:{{$index}}" >
         <span class="news">{{noticia.title}}</span> 
         <!-- {{noticia.title}} -->
-        <ion-option-button class="button-positive icon ion-android-star" ng-click="addFav($index)" ng-show="true"></ion-option-button>
+        <ion-option-button class="button-positive icon ion-android-star-outline" ng-click="addFav($index)" ng-show="true"></ion-option-button>
     </ion-item>   
 	</ion-list>
   </ion-content>  

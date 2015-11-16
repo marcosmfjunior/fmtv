@@ -27,7 +27,7 @@ angular.module('starter.controllers', [])
     console.log(feed);
     feedNews = feed;
     $scope.isLoading = false;    
-    $scope.noticias = feed;  
+    $scope.noticias = feed;      
   });
 
   $scope.atualiza = function() {
@@ -101,9 +101,20 @@ angular.module('starter.controllers', [])
   if( indice.charAt( 0 ) === ':' )
       indice = indice.slice( 1 );
 
-  console.log(noticiasFav[indice]);
-
   $scope.noticia = noticiasFav[indice];
+
+  $scope.socialSharing = function() {
+
+        $cordovaSocialSharing
+
+            .share( "link para notícia: " + $scope.noticia.link +' '+ $scope.noticia.content, $scope.noticia.title, null, $scope.noticia.link) // Share via native share sheet
+            .then(function(result) {
+                // Success!
+            }, function(err) {
+              console.log (err);
+                // An error occured. Show a message to the user
+            });
+  }
 })
 
 
@@ -116,10 +127,17 @@ angular.module('starter.controllers', [])
   if( indice.charAt( 0 ) === ':' )
       indice = indice.slice( 1 );
 
-  noticias.get(indice).then(function(noticia) {      
+  noticias.get(indice).then(function(noticia) {   
+      noticia.content = htmlEncode(noticia.content);   
       $scope.noticia = noticia;
       console.log(noticia);
     });  
+
+  function htmlEncode( input ) {
+    return String(input)
+        .replace(/&quot;/g, '"')  
+        .replace(/&amp;/g, '&')  
+  }
 
   $scope.socialSharing = function() {
 
