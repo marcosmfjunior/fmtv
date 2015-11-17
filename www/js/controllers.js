@@ -17,11 +17,12 @@ angular.module('starter.controllers', [])
 //  var horarios = ["08:10"]
 })
 
-.controller('NewsCtrl',function($scope,Noticias,$localstorage) {
+.controller('NewsCtrl',function($scope,Noticias,$localstorage,Toast) {
   $scope.isLoading = true;
   //console.log($localstorage.get('favNews'));
 
   var noticias = Noticias;  
+  var msg = Toast;
   var feedNews;
   noticias.all().then(function(feed) {
     console.log(feed);
@@ -29,6 +30,7 @@ angular.module('starter.controllers', [])
     $scope.isLoading = false;    
     $scope.noticias = feed;      
   });
+
 
   $scope.atualiza = function() {
     //$timeout( function() {
@@ -52,8 +54,10 @@ angular.module('starter.controllers', [])
     else{
       var News = $localstorage.getObject('favNews');
       angular.forEach(News, function(value, key) {
-        if(value.title == noticia.title)
+        if(value.title == noticia.title){
           PodeRegistrar = false;
+          msg.show("Essa notícia já foi adicionada. Clique no botão azul para visualizá-la!");
+        }
       });
 
       favNews = JSON.parse(favNews);//se nao for nulo passa de texto para o formato JSON
@@ -61,21 +65,22 @@ angular.module('starter.controllers', [])
       
     if (PodeRegistrar){
       favNews.push(noticia);
+      msg.show("Notícia adicionada aos favoritos");
 
       $localstorage.setObject('favNews',favNews);
     }
   }
 })
 
-.controller('NewsFavCtrl',function($scope,Noticias,$localstorage) {
-    $scope.shouldShowDelete = false;      
+.controller('NewsFavCtrl',function($scope,Noticias,$localstorage,Toast) {
+    $scope.shouldShowDelete = false;    
+    var msg = Toast;  
 
     $scope.mostraDeletaFav = function(){
       if($scope.shouldShowDelete == false)
         $scope.shouldShowDelete = true;      
       else
-        $scope.shouldShowDelete = false;      
-
+        $scope.shouldShowDelete = false;     
     }
 
     $scope.deletaFav = function(index){
@@ -84,6 +89,7 @@ angular.module('starter.controllers', [])
       noticiasFav.splice(index, 1);//atualiza o storage
       $localstorage.setObject('favNews',noticiasFav);
       $scope.noticiasFav.splice(index, 1);//atualiza o scopo
+      msg.show("Notícia removida dos favoritos com sucesso");
     }
 
     $scope.noticiasFav = $localstorage.getObject('favNews');
@@ -175,10 +181,10 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('EventosDetailCtrl', function($scope, $stateParams, Eventos, $cordovaSocialSharing, $cordovaCalendar) {
+.controller('EventosDetailCtrl', function($scope, $stateParams, Eventos, $cordovaSocialSharing, $cordovaCalendar, Toas) {
   var eventos = Eventos;   
   var indice = $stateParams.nIndex;
-
+  var msg = Toast;
 
   //verifica se o primeiro char é :, se for tira
   if( indice.charAt( 0 ) === ':' )
@@ -195,7 +201,7 @@ console.log("antes get");
       //console.log(evento);
     });  
 
-  $scope.teste = function() {
+  $scope.marcarCalendario = function() {
     var dataInicio = new Date($scope.evento.DATAINI);
     var dataFim = new Date($scope.evento.DATAFIM);
 
@@ -223,22 +229,12 @@ console.log("antes get");
       endDate: new Date(anoFim, mesFim, diaFim, 0, 0, 0, 0, 0)
     }).then(function (result) {
       // success
-     alert("O evento foi marcado no seu calendário com sucesso!")
+
+     msg.show("O evento foi marcado no seu calendário com sucesso!")
     }, function (err) {
       // error
-      alert("Ocorreu um erro ):  :" + err);
+      msg.show("Ocorreu um erro :/ ");
     });
   }
   
-  /*$scope.socialSharing = function() {
-        $cordovaSocialSharing
-
-            .share( "link para notícia: " + $scope.noticia.link +' '+ $scope.noticia.content, $scope.noticia.title, null, $scope.noticia.link) // Share via native share sheet
-            .then(function(result) {
-                // Success!
-            }, function(err) {
-              console.log (err);
-                // An error occured. Show a message to the user
-            });
-  }*/
 });
