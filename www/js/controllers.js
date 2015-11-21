@@ -4,18 +4,42 @@ angular.module('starter.controllers', [])
 
 .controller('RadioCtrl',function($scope) {})
 
-.controller('TvCtrl',function($scope) {})
+.controller('TvCtrl',function($scope,Programacao) {
+  var programacoes;
+  var diaAtual =  new Date().getDay();
+
+  var programacao = Programacao;  
+  programacao.all().then(function(feed) {    
+    programacoes = feed;    
+    $scope.programacoes = feed;
+    $scope.programa = programacoes[diaAtual];  
+  });
+
+  $scope.anterior = function(){
+    diaAtual--;
+    diaAtual=checaDia(diaAtual);    
+    $scope.programa = programacoes[diaAtual];
+  }
+  $scope.proximo = function(){
+    diaAtual++;
+    diaAtual=checaDia(diaAtual);
+    $scope.programa = programacoes[diaAtual];
+  } 
+
+  function checaDia(dia){//função para checar quando for dia extremo na semana  - sabado e domingo
+    if(dia == -1)
+      return 6;
+    else if(dia == 7)
+      return 0;
+    else
+      return dia;
+  }
+
+})
 
 .controller('InfoCtrl',function($scope) {})
 
-.controller('MicroCtrl',function($scope) {
-  var data = new Date();
-  var hora = data.getHours();    
-  var min = data.getMinutes();
-
-//comparar hr atual com o vetor de horarios para mostrar qual proximo bus
-//  var horarios = ["08:10"]
-})
+.controller('MicroCtrl',function($scope) {})
 
 .controller('NewsCtrl',function($scope,Noticias,$localstorage,Toast) {
   $scope.isLoading = true;
@@ -25,7 +49,7 @@ angular.module('starter.controllers', [])
   var msg = Toast;
   var feedNews;
   noticias.all().then(function(feed) {
-    console.log(feed);
+    //console.log(feed);
     feedNews = feed;
     $scope.isLoading = false;    
     $scope.noticias = feed;      
@@ -33,12 +57,10 @@ angular.module('starter.controllers', [])
 
 
   $scope.atualiza = function() {
-    //$timeout( function() {
         noticias.all().then(function(feed) {          
           $scope.noticias = feed;    
         });    
       $scope.$broadcast('scroll.refreshComplete');    
-//    }, 1000);      
   };
 
   $scope.addFav = function(indice){
@@ -46,7 +68,6 @@ angular.module('starter.controllers', [])
     noticia = feedNews[indice];
 
     var favNews = $localstorage.get('favNews');//nao foi usado getObject pois dava erro na verificação de nulo
-    //console.log(favNews);
     var PodeRegistrar = true;
     
     if(favNews == null)
@@ -181,7 +202,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('EventosDetailCtrl', function($scope, $stateParams, Eventos, $cordovaSocialSharing, $cordovaCalendar, Toas) {
+.controller('EventosDetailCtrl', function($scope, $stateParams, Eventos, $cordovaSocialSharing, $cordovaCalendar, Toast) {
   var eventos = Eventos;   
   var indice = $stateParams.nIndex;
   var msg = Toast;

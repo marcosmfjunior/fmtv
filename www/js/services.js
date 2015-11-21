@@ -20,6 +20,26 @@ angular.module('starter.services', [])
   };
 })
 
+.factory('Programacao', function($http,$q) {
+  var programacoes = $http.post("http://marcosmartinsjr.com/radio/evento/api/prog.json")
+    .then(function(response) {
+        return response.data;
+    });
+ 
+  return {
+    all: function() {
+      return programacoes.then(function(array){
+        return array;
+      });
+    },
+    get: function(index) {
+    return programacoes.then(function(array) {
+        return array[parseInt(index)];        
+    });
+  }
+  };
+})
+
 .factory('Eventos', function($http,$q) {
   var eventos = $http.post("http://marcosmartinsjr.com/radio/evento/api/eventos_v1.json")
     .then(function(response) {
@@ -76,7 +96,7 @@ angular.module('starter.services', [])
       return {
           show: function (message, duration, position) {
             message = message || "";
-            duration = duration || 'long';
+            duration = duration || 'short';
             position = position || 'bottom';
 
             if (!!window.cordova) {

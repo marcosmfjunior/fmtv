@@ -2,11 +2,32 @@
 
 <ion-view view-title="Comunicação" ng-init="tab=1">
   <ion-content>
-    <div id="player" class="player" name="player">
-    </div>
-      <p>
+
+  <ion-header-bar class="bar bar-header">
+  <hr>
       <iframe style="border:0;" scrolling="auto"  src="http://directradios.com/gerador3w/test/player.php?width=300&amp;height=30&amp;autoplay=0&amp;controles=1&amp;skin=beelden&amp;share=0&amp;autoreconect=1&amp;url=rtmp://shflash.directradios.com/furgfm/stream&amp;tipo=1&amp;logo=&amp;posicao=bottom-right&amp;site=" width="100%" height="100%"></iframe>   
-      </p>
+      </ion-header-bar> 
+
+      <ion-header-bar class="bar bar-subheader bar-stable"  align-title="center">
+        <button class="button button-energized ion-arrow-left-b" ng-click="anterior()"></button>
+        <h1 class="title" >{{programa.DIA}}</h1>
+        <button class="button button-energized ion-arrow-right-b" ng-click="proximo()"></button>
+      </ion-header-bar>
+  <ion-content>
+       
+       <div class="list espacamento">
+          <div  ng-repeat="programacao in programa.PROGRAMACOES" >
+              <div class="item row row-center">
+                <div class="col col-75">
+                  {{programacao.DESCRICAO}}
+                </div>
+                <div class="col col-25 horario">
+                  {{programacao.HORAINI | totime}} a {{programacao.HORAFIM | totime}}                      
+                </div>
+              </div>
+          </div>                
+        </div> 
+  </ion-content>
 
 <!--
     <div fb-post class="bar bar-subheader fb-page" data-href="https://www.facebook.com/FURGinstitucional" data-small-header="true" data-adapt-container-width="true" data-adapt-container-height="true" data-hide-cover="true" data-show-facepile="false" data-show-posts="true">
@@ -46,7 +67,7 @@
 
     -->
   </ion-content>
-
+<!--
   <div class="bar bar-footer rodape">
   <div class="tabs-striped tabs-color-light">
     <div class="tabs">
@@ -59,4 +80,5 @@
     </div>
   </div>
 </div>
+-->
 </ion-view>
