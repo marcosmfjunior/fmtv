@@ -1,9 +1,27 @@
 angular.module('starter.services', [])
 
-.factory('Noticias', function($http,$q) {
+.factory('popUp', function($rootScope, $timeout, $ionicPopup) {
+      return {
+          show: function (title,subTitle, template) {
+            $ionicPopup.show({
+             template: template,
+             title: title,
+             subTitle: subTitle,
+             buttons: [
+               { text: 'Fechar', type: 'button-positive'},
+               
+             ]
+           });
+      }
+    };
+  })
+
+.factory('Noticias', function($http,$q,popUp) {
   var noticias = $http.get("http://ajax.googleapis.com/ajax/services/feed/load", { params: { "v": "1.0", "q": "http://www.furg.br/bin/rss/noticias.php", "num":"20" } })
     .then(function(response) {
         return response.data.responseData.feed.entries;
+    },function(reason) { // quando falha a request
+      popUp.show("Comunica FURG","Erro","Não foi possível buscar os dados, verifique a sua conexão");      
     });
  
   return {
@@ -20,10 +38,12 @@ angular.module('starter.services', [])
   };
 })
 
-.factory('Programacao', function($http,$q) {
+.factory('Programacao', function($http,$q,popUp) {
   var programacoes = $http.post("http://marcosmartinsjr.com/radio/evento/api/prog.json")
     .then(function(response) {
         return response.data;
+    },function(reason) { // quando falha a request
+      popUp.show("Comunica FURG","Erro","Não foi possível buscar os dados, verifique a sua conexão");      
     });
  
   return {
@@ -115,25 +135,5 @@ angular.module('starter.services', [])
     };
   })
 
-.factory('popUp', function($rootScope, $timeout, $ionicPopup) {
-      return {
-          show: function (title,subTitle, template) {
-            $ionicPopup.show({
-             template: template,
-             title: title,
-             subTitle: subTitle,
-             buttons: [
-               { text: 'Fechar', type: 'button-positive'},
-               
-             ]
-           });
-      }
-    };
-  })
-
- function popUp() {
-
-
-   };
 
 ;

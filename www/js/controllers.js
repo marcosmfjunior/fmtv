@@ -262,7 +262,7 @@ angular.module('starter.controllers', [])
      msg.show("O evento foi marcado no seu calendário com sucesso!")
     }, function (err) {
       // error
-      msg.show("Ocorreu um erro :/ ");
+      msg.show("Ocorreu um erro :/ É provável que seu dispositivo nao suporte esta função");
     });
   }
   

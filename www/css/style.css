@@ -328,7 +328,7 @@
   margin: 1em 0;
   line-height: 1.6;
 }
-.cd-timeline-content .cd-read-more .horario{
+.cd-timeline-content .cd-read-more {
   float: right;
   padding: .8em 1em;
   background: #ffc900;
