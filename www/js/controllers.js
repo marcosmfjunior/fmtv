@@ -185,15 +185,20 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('EventosCtrl',function($scope, $stateParams, Eventos) {
+.controller('EventosCtrl',function($scope, $stateParams, Eventos,Toast) {
   $scope.isLoading = true;
   var eventos = Eventos;
 
   eventos.all().then(function(feed) {
-    $scope.isLoading = false;
+    $scope.isLoading = false;    
     $scope.eventos = feed;        
     $scope.urlBase = "http://marcosmartinsjr.com/radio/evento/uploads/eventos/";
+
+    if(feed.length == 0)
+      Toast.show("Não há eventos no momento")
   });
+
+
 
 
   $scope.atualiza = function() {
@@ -259,7 +264,7 @@ angular.module('starter.controllers', [])
     }).then(function (result) {
       // success
 
-     msg.show("O evento foi marcado no seu calendário com sucesso!")
+     msg.show("O evento foi marcado no seu calendário com sucesso!");
     }, function (err) {
       // error
       msg.show("Ocorreu um erro :/ É provável que seu dispositivo nao suporte esta função");
