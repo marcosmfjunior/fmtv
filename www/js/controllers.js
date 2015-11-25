@@ -34,16 +34,20 @@ angular.module('starter.controllers', [])
     else
       return dia;
   }
-
 })
 
 .controller('InfoCtrl',function($scope) {})
 
 .controller('MicroCtrl',function($scope) {})
 
-.controller('NewsCtrl',function($scope,Noticias,$localstorage,Toast) {
+.controller('NewsCtrl',function($scope,Noticias,$localstorage,Toast,popUp) {
+
   $scope.isLoading = true;
-  //console.log($localstorage.get('favNews'));
+
+  if($localstorage.get('primeiraVez') == null){
+      popUp.show("Comunica FURG","Primeiro Acesso","Colocar alguma img de ref para explicar usar <img class='full-image'");
+      $localstorage.set('primeiraVez',true);
+  }
 
   var noticias = Noticias;  
   var msg = Toast;
@@ -211,7 +215,6 @@ angular.module('starter.controllers', [])
   if( indice.charAt( 0 ) === ':' )
       indice = indice.slice( 1 );
 
-console.log("antes get");
   eventos.get(indice).then(function(evento) {      
     console.log(evento);
       $scope.evento = evento;
@@ -221,6 +224,11 @@ console.log("antes get");
       //console.log($scope.autores);
       //console.log(evento);
     });  
+
+  $scope.linkExterno = function(link){
+    window.open(link, "_system", "location=yes");
+    return false;
+  }
 
   $scope.marcarCalendario = function() {
     var dataInicio = new Date($scope.evento.DATAINI);

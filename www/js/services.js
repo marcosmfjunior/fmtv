@@ -115,4 +115,25 @@ angular.module('starter.services', [])
     };
   })
 
+.factory('popUp', function($rootScope, $timeout, $ionicPopup) {
+      return {
+          show: function (title,subTitle, template) {
+            $ionicPopup.show({
+             template: template,
+             title: title,
+             subTitle: subTitle,
+             buttons: [
+               { text: 'Fechar', type: 'button-positive'},
+               
+             ]
+           });
+      }
+    };
+  })
+
+ function popUp() {
+
+
+   };
+
 ;

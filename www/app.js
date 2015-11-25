@@ -50,17 +50,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html',
     controller:'TabCtrl'
   })
-
-
-  // Each tab has its own nav history stack:
-
-
+    
   .state('tab.radio', {
     url: '/radio',
     views: {
@@ -91,26 +87,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
         }
       }      
   })
-/*
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })*/
 
   .state('tab.news', {
     url: '/news',
@@ -199,10 +175,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
         controller: 'ProjetoCtrl'
       }
     }
-  });
+  })
+
+  ;
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/news'); // seta a pag inicial
+  //$urlRouterProvider.otherwise('/tab/intro'); // seta a pag inicial
 
 });
 

@@ -32,7 +32,6 @@
 			 
 					<div class="cd-timeline-content">
 						<h2>{{programacao.DESCRICAO}}</h2>
-						<p>incluir descriçao no eventos.</p>
 						<span class="cd-read-more">{{programacao.HORAINI | totime}} a {{programacao.HORAFIM | totime}} <br>{{programacao.SALA}}</span>
 						
 					</div> <!-- cd-timeline-content -->
@@ -46,7 +45,7 @@
 	  </div>
 
 	  <div class="item tabs tabs-secondary tabs-icon-left">
-	    <a class="tab-item" style="color:#828282" href="#" onclick='window.open("{{evento.LINK_INFORMACAO}}", "_system", "location=yes"); return false;'>
+	    <a class="tab-item" style="color:#828282" href="#" ng-click="linkExterno({{evento.LINK_INFORMACAO}})">
 	      <i class="icon ion-android-bookmark"></i>
 	      Inscrição
 	    </a>
