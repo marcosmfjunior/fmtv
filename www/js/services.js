@@ -1,4 +1,4 @@
-angular.module('starter.services', [])
+angular.module('starter.services', ['ngResource'])
 
 .factory('popUp', function($rootScope, $timeout, $ionicPopup) {
       return {
@@ -16,14 +16,18 @@ angular.module('starter.services', [])
     };
   })
 
-.factory('Noticias', function($http,$q,popUp) {
-  var noticias = $http.get("http://ajax.googleapis.com/ajax/services/feed/load", { params: { "v": "1.0", "q": "http://www.furg.br/bin/rss/noticias.php", "num":"20" } })
+.factory('Noticias', function($http,$q,popUp,$resource) {
+  var noticias = $http.get("http://comunica.furg.br/rss.php")
     .then(function(response) {
-        return response.data.responseData.feed.entries;
+      console.log(response);
+      var data = [];
+      for(var i = 0; i<20; i++){
+        data.push(response.data.item[i]);
+      }
+        return data;
     },function(reason) { // quando falha a request
       popUp.show("Comunica FURG","Erro","Não foi possível buscar os dados, verifique a sua conexão");      
-    });
- 
+    }); 
   return {
     all: function() {
       return noticias.then(function(array){

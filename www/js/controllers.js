@@ -13,7 +13,9 @@ angular.module('starter.controllers', [])
     programacoes = feed;    
     $scope.programacoes = feed;
     $scope.programa = programacoes[diaAtual];  
+    console.log(feed);
   });
+
 
   $scope.anterior = function(){
     diaAtual--;
