@@ -1,16 +1,52 @@
-<ion-view view-title="Furg TV" ng-init="tab=1">
+    <script src="jw-player/src/js/jwplayer.js"></script>
+
+<ion-view view-title="Comunicação" ng-init="tab=1">
   <ion-content>
 
+  <ion-header-bar class="bar bar-header">
+  <hr>
+      <iframe style="border:0;" scrolling="auto"  src="http://directradios.com/gerador3w/test/player.php?width=300&amp;height=30&amp;autoplay=0&amp;controles=1&amp;skin=beelden&amp;share=0&amp;autoreconect=1&amp;url=rtmp://shflash.directradios.com/furgfm/stream&amp;tipo=1&amp;logo=&amp;posicao=bottom-right&amp;site=" width="100%" height="100%"></iframe>   
+      </ion-header-bar> 
 
+      <ion-header-bar class="bar bar-subheader bar-stable"  align-title="center">
+        <button class="button button-energized ion-arrow-left-b" ng-click="anterior()"></button>
+        <h1 class="title" >{{programa.DIA}}</h1>
+        <button class="button button-energized ion-arrow-right-b" ng-click="proximo()"></button>
+      </ion-header-bar>
+  <ion-content>
+       
+       <div class="list espacamento">
+          <div  ng-repeat="programacao in programa.PROGRAMACOES" >
+              <div class="item row row-center">
+                <div class="col col-75">
+                  {{programacao.DESCRICAO}}
+                </div>
+                <div class="col col-25 horario">
+                  {{programacao.HORAINI | totime}} a {{programacao.HORAFIM | totime}}                      
+                </div>
+              </div>
+          </div>                
+        </div> 
+  </ion-content>
+
+<!--
+    <div fb-post class="bar bar-subheader fb-page" data-href="https://www.facebook.com/FURGinstitucional" data-small-header="true" data-adapt-container-width="true" data-adapt-container-height="true" data-hide-cover="true" data-show-facepile="false" data-show-posts="true">
+    </div>
 <div class="tabs-container">
     <div class="tab-content" ng-show="tab == 1" > 
-      <iframe style="border:0;width:110%; height:440px;" scrolling="1" marginheight="0" marginwidth="0" src="http://directradios.com/gerador3w/test/player.php?width=&amp;height=400&amp;autoplay=0&amp;controles=1&amp;skin=six&amp;share=1&amp;autoreconect=1&amp;url=rtmp://shflash.directradios.com/furgtv/stream&amp;tipo=1&amp;logo=&amp;posicao=top-right&amp;site=" ></iframe>
+      <div class="bar bar-header bar-stable">
+        <iframe style="border:0;" scrolling="0" marginheight="0" marginwidth="0" src="http://directradios.com/gerador3w/test/player.php?width=300&amp;height=30&amp;autoplay=0&amp;controles=1&amp;skin=six&amp;share=0&amp;autoreconect=1&amp;url=rtmp://shflash.directradios.com/furgfm/stream&amp;tipo=1&amp;logo=&amp;posicao=top-right&amp;site=" width="100%" height="100%"></iframe>   
+      </div>
+
+      <div fb-post class="bar bar-subheader fb-page" data-href="https://www.facebook.com/FURGinstitucional" data-small-header="true" data-adapt-container-width="true" data-adapt-container-height="true" data-hide-cover="true" data-show-facepile="false" data-show-posts="true">
+      </div>
     </div>
 
     <div class="tab-content" ng-show="tab == 2">
-      <h3>Segunda aba</h3>
+      <h3>  
       <p>
          <ion-list>
+      <iframe style="border:0;width:110%; height:440px;" scrolling="1" marginheight="0" marginwidth="0" src="http://directradios.com/gerador3w/test/player.php?width=&amp;height=400&amp;autoplay=0&amp;controles=1&amp;skin=six&amp;share=1&amp;autoreconect=1&amp;url=rtmp://shflash.directradios.com/furgtv/stream&amp;tipo=1&amp;logo=&amp;posicao=top-right&amp;site=" ></iframe>
 
 
       <div class="list card">
@@ -21,16 +57,7 @@
           </div>
         </div>
       </div>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
+     
     </ion-list>
       </p>
     </div>
@@ -38,20 +65,20 @@
     
   </div>
 
-
+    -->
   </ion-content>
-  <div class="bar bar-footer ">
-  <div class="tabs-striped tabs-color-calm">
+<!--
+  <div class="bar bar-footer rodape">
+  <div class="tabs-striped tabs-color-light">
     <div class="tabs">
-      <!-- ao vivo -->
       <a class="tab-item active " ng-click="tab=1" ng-class="{'active' : tab==1}">
-        <i class="icon ion-ios-play-outline" ></i>
+        <i class="icon ion-mic-c" ></i>
       </a>
-      <!-- programaçao -->
       <a class="tab-item" href="#" ng-click="tab=2" ng-class="{'active' : tab==2 }">
-        <i class="icon ion-ios-list-outline"></i>       
+        <i class="icon ion-ios-videocam"></i>       
       </a>
     </div>
   </div>
 </div>
+-->
 </ion-view>
